@@ -2,12 +2,6 @@
 
 one:
   title: MyString
-  image: MyString
-  folder_id: 1
-  user_id: 1
 
 two:
   title: MyString
-  image: MyString
-  folder_id: 1
-  user_id: 1

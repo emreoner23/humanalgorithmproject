@@ -5,5 +5,9 @@
   <%= @link.title %>
 </p>
 
-<%= link_to 'Edit', edit_link_path(@link) %> |
+
+<% if @link.user == current_user %>
+	<%= link_to 'Edit', edit_link_path(@link) %> |
+<% end %>
+
 <%= link_to 'Back', links_path %>

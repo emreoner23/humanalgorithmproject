@@ -14,6 +14,10 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.6.0'
 gem 'devise',  '~> 4.2.0'
 
+gem "paperclip", "~> 5.0.0"
+
+gem 'link_thumbnailer'
+
 group :development, :test do
   gem 'sqlite3'
   gem 'byebug', platform: :mri

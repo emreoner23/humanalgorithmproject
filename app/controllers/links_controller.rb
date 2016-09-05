@@ -4,8 +4,9 @@ class LinksController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   # GET /links
   # GET /links.json
+  
   def index
-    @links = Link.all
+  @links = LinkThumbnailer.generate(params[:weblink])
   end
 
   # GET /links/1
@@ -24,8 +25,13 @@ class LinksController < ApplicationController
 
   # POST /links
   # POST /links.json
+
   def create
-    @link = current_user.links.build(link_params)
+    @link = Link.new(link_params)
+    @link.user = current_user
+    thumb = LinkThumbnailer.generate(@link.url)
+
+    link.title = thumb.title
 
     respond_to do |format|
       if @link.save
@@ -75,6 +81,6 @@ class LinksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def link_params
-      params.require(:link).permit(:title)
-    end
+      params.require(:link).permit(:title, :picture)
+    end 
 end
